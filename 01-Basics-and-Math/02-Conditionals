@@ -1,0 +1,122 @@
+A collection of C++ exercises completed as part
+ * of my Computer Science coursework.
+ *
+ * Exercises:
+ * 1. Middle Word Check - Compares a word
+ *    alphabetically with the word "middle".
+ *
+ * 2. Animal ABCs - Uses a switch statement
+ *    to match letters with animal names.
+ *
+ * 3. Delivery Range Check - Evaluates travel
+ *    distances and vehicle restrictions
+ *    using conditional logic.
+ *
+ * Concepts: Functions, if/else statements,
+ * switch statements, strings, and arithmetic.
+ */
+
+
+//
+#include "apex_code.h"
+#include <iostream>
+#include <sstream>
+
+using namespace std;
+
+void middle_word_check(stringstream &cin, stringstream &cout) {
+
+  string word;
+  string middle = "middle";
+
+  cin >> word;
+
+  if (word < middle) {
+    cout << word << " comes before " << middle;
+  } else if (word > middle) {
+    cout << word << " comes after " << middle;
+  } else {
+    cout << word << " is the same as " << middle;
+  }
+}
+
+void animal_abcs(stringstream &cin, stringstream &cout) {
+
+  // case statment
+  char letter;
+  string animal = "none";
+
+  cin >> letter;
+
+  switch (letter) {
+  case 'A':
+  case 'a':
+    animal = "anteater";
+    break;
+
+  case 'B':
+  case 'b':
+    animal = "bat";
+    break;
+
+  case 'C':
+  case 'c':
+    animal = "caterpillar";
+    break;
+
+  case 'D':
+  case 'd':
+    animal = "dolphin";
+    break;
+
+  case 'E':
+  case 'e':
+    animal = "emu";
+    break;
+
+  case 'F':
+  case 'f':
+    animal = "frog";
+    break;
+
+  default:
+    break;
+  }
+  if (animal != "none") {
+    cout << animal;
+  } else {
+    cout << letter << " is not supported";
+  }
+
+}
+void delivery_range_check(std::stringstream &cin, std::stringstream &cout) {
+
+  string carType;
+  double milesOnFullTank;
+  double d1, d2, d3, d4;
+  double totalMiles;
+  double totalTime;
+
+  cin >> carType;
+  cin >> milesOnFullTank;
+  cin >> d1;
+  cin >> d2;
+  cin >> d3;
+  cin >> d4;
+
+  totalMiles = d1 + d2 + d3 + d4;
+  totalTime = totalMiles / 45.0;
+
+  if (totalMiles > milesOnFullTank || totalTime > 2.0) {
+    cout << "Not going to happen.";
+  } else if (carType == "gas") {
+    if (d1 < 15 && d2 < 15 && d3 < 15 && d4 < 15)
+      cout << "You can make it on an electric scooter!";
+    else
+      cout << "You can make it in your gas car!";
+  } else if (carType == "electric")
+    cout << "You can make it in your electric car!";
+  else {
+    cout << "ERROR should never happen";
+  }
+}
